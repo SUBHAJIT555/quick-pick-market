@@ -22,8 +22,10 @@ set_exception_handler(function ($e) {
 // --- CORS ---
 $origin  = $_SERVER['HTTP_ORIGIN'] ?? '';
 $allowed = [
-    'https://supreme-cart.com',
-    'https://www.supreme-cart.com',
+    'https://quick-pick-market.com',
+    'https://www.quick-pick-market.com',
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
 ];
 if ($origin && in_array($origin, $allowed, true)) {
     header("Access-Control-Allow-Origin: $origin");
@@ -148,14 +150,14 @@ $smtpPass = $_ENV['SMTP_PASS'];
 $smtpPort = $_ENV['SMTP_PORT'];
 $smtpSecure = $_ENV['SMTP_SECURE'];
 
-$toAddresses = [['aditya@baharnani.com', 'Aditya Baharnani']];
+$toAddresses = [['info@quick-pick-market.com', 'Quick Pick Market']];
 $fromEmail = $smtpUser;
-$fromName  = 'Snap Gears Website';
+$fromName  = 'Quick Pick Market';
 
 // --- Brand styling ---
-$brandName = 'Supreme Cart';
-$tagline   = 'Where Innovation Meets Excellence.';
-$brandColor = '#0a2540';
+$brandName = 'Quick Pick Market';
+$tagline   = 'Quality essentials, picked for you — delivered with care across India.';
+$brandColor = '#18181B';
 $muted = '#6b7280';
 $bg = '#f9fafb';
 $cardBg = '#ffffff';
@@ -208,7 +210,7 @@ if ($formType === 'quote') {
     }
     $billingInfo = '
       <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="border:1px solid '.$border.';border-radius:4px;">
-        <tr><td style="background:#f3f4f6;padding:8px 10px;font-family:Arial,Helvetica,sans-serif;font-weight:600;color:#0a2540;">Billing Info</td></tr>
+        <tr><td style="background:#f3f4f6;padding:8px 10px;font-family:Arial,Helvetica,sans-serif;font-weight:600;color:'.$brandColor.';">Billing Info</td></tr>
         <tr><td style="padding:10px;font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#333;">
           <p><strong>'.clean(v('billing_first_name').' '.v('billing_last_name')).'</strong></p>
           <p>'.clean(v('billing_email')).'</p>
@@ -228,7 +230,7 @@ if ($formType === 'quote') {
     if (v('shipping_first_name') || v('shipping_address')) {
         $shippingInfo = '
           <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="border:1px solid '.$border.';border-radius:4px;">
-            <tr><td style="background:#f3f4f6;padding:8px 10px;font-family:Arial,Helvetica,sans-serif;font-weight:600;color:#0a2540;">Shipping Info</td></tr>
+            <tr><td style="background:#f3f4f6;padding:8px 10px;font-family:Arial,Helvetica,sans-serif;font-weight:600;color:'.$brandColor.';">Shipping Info</td></tr>
             <tr><td style="padding:10px;font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#333;">';
         if (v('shipping_first_name')) {
             $shippingInfo .= '<p><strong>'.clean(v('shipping_first_name').' '.v('shipping_last_name')).'</strong></p>';
@@ -267,12 +269,12 @@ if ($formType === 'quote') {
     <tr>
       <td style="padding:0 24px 24px;">
         <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="border:1px solid '.$border.';border-radius:4px;">
-          <tr><td style="background:#f3f4f6;padding:8px 10px;font-family:Arial,Helvetica,sans-serif;font-weight:600;color:#0a2540;">Order Summary</td></tr>
+          <tr><td style="background:#f3f4f6;padding:8px 10px;font-family:Arial,Helvetica,sans-serif;font-weight:600;color:'.$brandColor.';">Order Summary</td></tr>
           <tr><td style="padding:10px;">'.$cartHtml.'
             <table width="100%" cellpadding="0" cellspacing="0" style="margin-top:12px;border-collapse:collapse;">
-              <tr><td align="right" style="padding:6px 0;font-family:Arial,Helvetica,sans-serif;font-weight:600;color:#0a2540;">CART SUBTOTAL:</td><td align="right" style="padding:6px 0;">'.clean(v('cart_total')).'</td></tr>
-              <tr><td align="right" style="padding:6px 0;font-family:Arial,Helvetica,sans-serif;font-weight:600;color:#0a2540;">SHIPPING AND HANDLING:</td><td align="right" style="padding:6px 0;">FREE SHIPPING</td></tr>
-              <tr><td align="right" style="padding:6px 0;font-family:Arial,Helvetica,sans-serif;font-weight:600;color:#0a2540;">ORDER TOTAL:</td><td align="right" style="padding:6px 0;">'.clean(v('order_total')).'</td></tr>
+              <tr><td align="right" style="padding:6px 0;font-family:Arial,Helvetica,sans-serif;font-weight:600;color:'.$brandColor.';">CART SUBTOTAL:</td><td align="right" style="padding:6px 0;">'.clean(v('cart_total')).'</td></tr>
+              <tr><td align="right" style="padding:6px 0;font-family:Arial,Helvetica,sans-serif;font-weight:600;color:'.$brandColor.';">SHIPPING AND HANDLING:</td><td align="right" style="padding:6px 0;">FREE SHIPPING</td></tr>
+              <tr><td align="right" style="padding:6px 0;font-family:Arial,Helvetica,sans-serif;font-weight:600;color:'.$brandColor.';">ORDER TOTAL:</td><td align="right" style="padding:6px 0;">'.clean(v('order_total')).'</td></tr>
             </table>
           </td></tr>
         </table>
@@ -284,7 +286,7 @@ else if($formType === 'contact') {
     <tr>
       <td style="padding:0 24px 24px;">
         <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid '.$border.';border-radius:4px;">
-          <tr><td style="background:#f3f4f6;padding:8px 10px;font-family:Arial,Helvetica,sans-serif;font-weight:600;color:#0a2540;">Contact Details</td></tr>
+          <tr><td style="background:#f3f4f6;padding:8px 10px;font-family:Arial,Helvetica,sans-serif;font-weight:600;color:'.$brandColor.';">Contact Details</td></tr>
           <tr><td style="padding:12px;font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#333;">
             <p><strong>Name:</strong> '.clean(v('name')).'</p>
             <p><strong>Email:</strong> '.clean(v('email')).'</p>
@@ -303,7 +305,7 @@ else {
     <tr>
       <td style="padding:0 24px 24px;">
         <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid '.$border.';border-radius:4px;">
-          <tr><td style="background:#f3f4f6;padding:8px 10px;font-family:Arial,Helvetica,sans-serif;font-weight:600;color:#0a2540;">'.clean($label).'</td></tr>
+          <tr><td style="background:#f3f4f6;padding:8px 10px;font-family:Arial,Helvetica,sans-serif;font-weight:600;color:'.$brandColor.';">'.clean($label).'</td></tr>
           <tr><td style="padding:12px;font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#333;">
             <p><strong>Email:</strong> '.clean($email).'</p>
           </td></tr>
@@ -344,14 +346,14 @@ ob_start(); ?>
         <table width="600" cellpadding="0" cellspacing="0" border="0" role="presentation" style="width:600px;max-width:100%;background:#ffffff;border:1px solid #e5e7eb;border-radius:6px;overflow:hidden;">
           <tr>
             <td align="center" style="padding:30px 10px 20px;">
-              <h1 style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:22px;color:#0a2540;font-weight:700;"><?= clean($brandName) ?></h1>
+              <h1 style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:22px;color:<?= $brandColor ?>;font-weight:700;"><?= clean($brandName) ?></h1>
               <p style="margin:6px 0 0;font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#6b7280;"><?= clean($tagline) ?></p>
             </td>
           </tr>
           <tr><td style="height:1px;background:#e5e7eb;"></td></tr>
           <tr>
             <td align="center" style="padding:20px;">
-              <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:600;color:#0a2540;"><?= clean($subject) ?></p>
+              <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:600;color:<?= $brandColor ?>;"><?= clean($subject) ?></p>
               <p style="margin:4px 0 0;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#6b7280;">Received at <?= date('Y-m-d H:i:s') ?> (server time)</p>
             </td>
           </tr>

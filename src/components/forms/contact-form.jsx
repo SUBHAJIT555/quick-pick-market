@@ -77,7 +77,7 @@ const ContactForm = () => {
             name="email"
             type="email"
             className="scs-contact-form__input"
-            placeholder="you@example.com"
+            placeholder="Enter your email address"
             autoComplete="email"
           />
           <ErrorMsg msg={errors.email?.message} />
